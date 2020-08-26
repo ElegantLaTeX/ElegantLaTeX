@@ -15,6 +15,11 @@ clean.bat
 elegant*-cn.pdf
 elegant*-en.pdf
 *.dates
+elegantlatex.glo
+elegantlatex.ins
+elegantlatex.hd
+
+
 
 ## Intermediate documents:
 *.dvi
