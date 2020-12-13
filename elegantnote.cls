@@ -18,7 +18,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{elegantnote}[2020/08/26 v1.1 Elegant Note Template]
 
-\end{itemize}
 \newcommand{\mymacro}{This is
   a \LaTeX{} macro.}
 \begin{macro}{\examplemacro}
@@ -26,6 +25,38 @@
     Some code here, probably
 }
 \end{macro}
+\newenvironment{YOURENV}{}{}
+\PassOptionsToPackage{no-math}{fontspec}
+\RequirePackage{iftex}
+\ifdefstring{\ELEGANT@lang}{cn}{
+  \ifXeTeX
+    \ifdefstring{\ELEGANT@chinesefont}{founder}{
+      \RequirePackage[UTF8,scheme=plain,fontset=none]{ctex}
+      \setCJKmainfont[BoldFont={FZHei-B01},ItalicFont={FZKai-Z03}]{FZShuSong-Z01}
+      \setCJKsansfont[BoldFont={FZHei-B01},ItalicFont={FZHei-B01}]{FZHei-B01}
+      \setCJKmonofont[BoldFont={FZHei-B01},ItalicFont={FZHei-B01}]{FZFangSong-Z02}
+      \setCJKfamilyfont{zhsong}{FZShuSong-Z01}
+      \setCJKfamilyfont{zhhei}{FZHei-B01}
+      \setCJKfamilyfont{zhkai}{FZKai-Z03}
+      \setCJKfamilyfont{zhfs}{FZFangSong-Z02}
+      \newcommand*{\songti}{\CJKfamily{zhsong}}
+      \newcommand*{\heiti}{\CJKfamily{zhhei}}
+      \newcommand*{\kaishu}{\CJKfamily{zhkai}}
+      \newcommand*{\fangsong}{\CJKfamily{zhfs}}}{\relax}
+
+    \ifdefstring{\ELEGANT@chinesefont}{nofont}{
+      \RequirePackage[UTF8,scheme=plain,fontset=none]{ctex}}{\relax}
+
+    \ifdefstring{\ELEGANT@chinesefont}{ctexfont}{
+      \RequirePackage[UTF8,scheme=plain]{ctex}}{\relax}
+  \else
+    \ifdefstring{\ELEGANT@chinesefont}{ctexfont}{
+      \RequirePackage[UTF8,scheme=plain]{ctex}}{\relax}
+  \fi
+  \AfterEndPreamble{
+    % \renewcommand{\itshape}{\kaishu}
+    \setlength\parindent{2\ccwd}}
+}{\relax}
 %% 
 %% Copyright (C) 2009 by ElegantLaTeX <elegantlatex2e@gmail.com>
 %% 

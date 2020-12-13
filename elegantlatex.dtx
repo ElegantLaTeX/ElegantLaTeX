@@ -177,7 +177,7 @@ and the derived files           elegantlatex.ins,
 %  \item 微信公众号：Elegant\LaTeX{}
 %  \item 用户 QQ 群：692108391 
 %  \item 邮件：\email{elegantlatex2e@gmail.com}
-\end{itemize}
+% \end{itemize}
 %
 %\section{使用说明}
 %\DescribeMacro{\email}
@@ -232,6 +232,8 @@ and the derived files           elegantlatex.ins,
 %</note>
 % 
 %
+% \DescribeEnv{YOURENV}
+% Put description of |YOURENV| here.
 %
 %<*book>
 %\begin{environment}{example}
@@ -248,9 +250,50 @@ and the derived files           elegantlatex.ins,
 %\end{environment}
 %</book>
 %
+% \section{Implementation}
+% \begin{environment}{YOURENV}
+% Put explanation of |YOURENV|’s implementation here.
+%    \begin{macrocode}
+\newenvironment{YOURENV}{}{}
+%    \end{macrocode}
+% \end{environment}
+%
 %\StopEventually{
 %  \PrintChanges
 %}
 %
+%    \begin{macrocode}
+\PassOptionsToPackage{no-math}{fontspec}
+\RequirePackage{iftex}
+\ifdefstring{\ELEGANT@lang}{cn}{
+  \ifXeTeX
+    \ifdefstring{\ELEGANT@chinesefont}{founder}{
+      \RequirePackage[UTF8,scheme=plain,fontset=none]{ctex}
+      \setCJKmainfont[BoldFont={FZHei-B01},ItalicFont={FZKai-Z03}]{FZShuSong-Z01}
+      \setCJKsansfont[BoldFont={FZHei-B01},ItalicFont={FZHei-B01}]{FZHei-B01}
+      \setCJKmonofont[BoldFont={FZHei-B01},ItalicFont={FZHei-B01}]{FZFangSong-Z02}
+      \setCJKfamilyfont{zhsong}{FZShuSong-Z01}
+      \setCJKfamilyfont{zhhei}{FZHei-B01}
+      \setCJKfamilyfont{zhkai}{FZKai-Z03}
+      \setCJKfamilyfont{zhfs}{FZFangSong-Z02}
+      \newcommand*{\songti}{\CJKfamily{zhsong}}
+      \newcommand*{\heiti}{\CJKfamily{zhhei}}
+      \newcommand*{\kaishu}{\CJKfamily{zhkai}}
+      \newcommand*{\fangsong}{\CJKfamily{zhfs}}}{\relax}
+    
+    \ifdefstring{\ELEGANT@chinesefont}{nofont}{
+      \RequirePackage[UTF8,scheme=plain,fontset=none]{ctex}}{\relax}
+
+    \ifdefstring{\ELEGANT@chinesefont}{ctexfont}{
+      \RequirePackage[UTF8,scheme=plain]{ctex}}{\relax}
+  \else
+    \ifdefstring{\ELEGANT@chinesefont}{ctexfont}{
+      \RequirePackage[UTF8,scheme=plain]{ctex}}{\relax}
+  \fi
+  \AfterEndPreamble{
+    % \renewcommand{\itshape}{\kaishu}
+    \setlength\parindent{2\ccwd}}
+}{\relax}
+%    \end{macrocode}
 %
 %\Finale
