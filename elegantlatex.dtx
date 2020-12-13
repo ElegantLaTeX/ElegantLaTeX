@@ -51,11 +51,10 @@ This work is "maintained" (as per LPPL maintenance status) by
 You.
 
 This work consists of the file  elegantlatex.dtx
-and the derived files           elegantlatex.ins,
-                                elegantlatex.pdf,
-                                elegantnote.cls,
-                                elegantbook.cls and
-                                elegantpaper.cls.
+and the derived files elegantlatex.pdf,
+                      elegantnote.cls,
+                      elegantbook.cls and
+                      elegantpaper.cls.
 
 \endpostamble
 \usedir{tex/latex/elegantlatex}
@@ -92,6 +91,7 @@ and the derived files           elegantlatex.ins,
 %<*driver>
 \ProvidesFile{\jobname.dtx}[2020/04/12 v3.1.1 ElegantLaTeX dtx]
 \documentclass{ltxdoc}
+\OnlyDescription
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{geometry}
@@ -106,27 +106,10 @@ and the derived files           elegantlatex.ins,
 \linespread{1.35}
 \geometry{a4paper, lmargin=2in, rmargin=1in}
 \usepackage{fontspec}
-\setmainfont{Amiri}
-\setsansfont[
-  UprightFont=*-Regular,
-  ItalicFont=*-Italic,
-  BoldFont=*-Bold,
-  BoldItalicFont=*-BoldItalic]{Roboto}
-\setmonofont{Ubuntu Mono}
-\usepackage{xeCJK}
-\setCJKmainfont[BoldFont={FZHei-B01},ItalicFont={FZKai-Z03}]{FZShuSong-Z01}
-\setCJKsansfont[BoldFont={FZHei-B01},ItalicFont={FZHei-B01}]{FZHei-B01}
-\setCJKmonofont[BoldFont={FZHei-B01},ItalicFont={FZHei-B01}]{FZFangSong-Z02}
-\setCJKfamilyfont{zhsong}{FZShuSong-Z01}
-\setCJKfamilyfont{zhhei}{FZHei-B01}
-\setCJKfamilyfont{zhkai}{FZKai-Z03}
-\setCJKfamilyfont{zhfs}{FZFangSong-Z02}
-\newcommand*{\songti}{\CJKfamily{zhsong}}
-\newcommand*{\heiti}{\CJKfamily{zhhei}}
-\newcommand*{\kaishu}{\CJKfamily{zhkai}}
-\newcommand*{\fangsong}{\CJKfamily{zhfs}}
-\setlength{\parindent}{2em}
-\usepackage{zhlipsum}
+\usepackage{graphicx}
+\usepackage{newtxtext}
+\renewcommand{\ttdefault}{cmtt}
+\usepackage[UTF8]{ctex}
 \usepackage[numbered]{hypdoc}
 \newcommand\email[1]{\href{mailto:#1}{\nolinkurl{#1}}}
 \usepackage[shortlabels,inline]{enumitem}
@@ -137,13 +120,17 @@ and the derived files           elegantlatex.ins,
 \RecordChanges
 \begin{document}
   \DocInput{\jobname.dtx}
+  \PrintChanges
+  \PrintIndex
 \end{document}
 %</driver>
 % \fi
 %\GetFileInfo{\jobname.dtx}
 %
 %
-%\title{\bfseries
+% \DoNotIndex{\xmulineto, \arabic, \newenvironments, \LaTeX,
+% \textbf, \thechapter, \theexam, \rmfamily, \renewcommand, \ignorespacesafterend, \vspace, \par, \draw, \begin, \end, \\, }
+% \title{\bfseries
 %  Elegant\LaTeX{} --- Templates Guide Book \\ 
 %  ElegantLaTeX 系列模板说明文档
 % }
@@ -157,7 +144,7 @@ and the derived files           elegantlatex.ins,
 %\changes{v1.0}{2009/10/06}{First public release}
 %
 %
-%\section{ElegantLaTeX 简介}
+%\section{Elegant\LaTeX{} 简介 / Elegant\LaTeX{} Introduction}
 % Elegant\LaTeX{} 项目组致力于打造一系列美观、优雅、简便的模板方便用户使用。目前由
 % \href{https://github.com/ElegantLaTeX/ElegantNote}{ElegantNote}，
 % \href{https://github.com/ElegantLaTeX/ElegantBook}{ElegantBook}，
@@ -166,6 +153,19 @@ and the derived files           elegantlatex.ins,
 % 如果您有其他问题，建议或者意见，欢迎在 GitHub 上给我们提交 
 % \href{https://github.com/ElegantLaTeX/ElegantBook/issues}{issues} 或者邮件联系我们。
 %
+%
+% Elegant\LaTeX{} Program developers are intended to provide you beautiful, 
+% elegant, user-friendly templates. Currently, the Elegant\LaTeX{} is composed of 
+% \href{https://github.com/ElegantLaTeX/ElegantNote}{ElegantNote}, 
+% \href{https://github.com/ElegantLaTeX/ElegantBook}{ElegantBook}, 
+% \href{https://github.com/ElegantLaTeX/ElegantPaper}{ElegantPaper}, 
+% designed for typesetting notes, books, and working papers respectively. 
+% Latest releases are strongly recommended! This guide is aimed at briefly 
+% introducing the 101 of this template. For any other question, suggestion or comment, 
+% feel free to contact us on GitHub \href{https://github.com/ElegantLaTeX/ElegantBook/issues}{issues} 
+% or email us at \email{elegantlatex2e@gmail.com}.
+%
+% 
 % 我们的联系方式如下，建议加入用户 QQ 群提问，这样能更快获得准确的反馈，加群时请备注 \LaTeX{} 或者 Elegant\LaTeX{} 相关内容。
 % \begin{itemize}
 %  \item 官网：\href{https://elegantlatex.org/}{https://elegantlatex.org/}
@@ -179,7 +179,21 @@ and the derived files           elegantlatex.ins,
 %  \item 邮件：\email{elegantlatex2e@gmail.com}
 % \end{itemize}
 %
-%\section{使用说明}
+%
+% Contact Infos:
+% \begin{itemize}
+%   \item Homepage: \href{https://elegantlatex.org/}{https://elegantlatex.org/}
+%   \item GitHub: \href{https://github.com/ElegantLaTeX/}{https://github.com/ElegantLaTeX/}
+%   \item CTAN: \href{https://ctan.org/pkg/elegantbook}{https://ctan.org/pkg/elegantbook}
+%   \item Wiki: \href{https://github.com/ElegantLaTeX/ElegantBook/wiki}{https://github.com/ElegantLaTeX/ElegantBook/wiki}
+%   \item Download: \href{https://github.com/ElegantLaTeX/ElegantBook/releases}{release}, \href{https://github.com/ElegantLaTeX/ElegantBook/archive/master.zip}{latest version}
+%   \item Weibo: Elegant\LaTeX{}
+%   \item Wechat: Elegant\LaTeX{}
+%   \item QQ: 692108391
+%   \item Email: \email{elegantlatex2e@gmail.com}
+% \end{itemize}
+%
+% \section{使用说明}
 %\DescribeMacro{\email}
 % 模板定义了邮件命令 \cs{email}, 有一个必选项，\marg{url}.
 % \begin{verbatim}
@@ -209,6 +223,14 @@ and the derived files           elegantlatex.ins,
 %  \definecolor{third}{RGB}{0,80,80} 
 % \end{verbatim}
 %
+% \begin{figure}[!htbp]
+% \centering
+% \includegraphics[width=0.6\textwidth]{cert.pdf}
+% \end{figure}
+%
+%
+%
+%
 % \begin{macro}{\mymacro}
 % We define a trivial macro, |\mymacro|, to illustrate
 % the use of the |macro| environment.
@@ -220,8 +242,11 @@ and the derived files           elegantlatex.ins,
 %
 %
 %
-%
+%    \begin{macrocode}
 %<*note>
+%    \end{macrocode}
+%
+%
 %    \begin{macrocode}
 \begin{macro}{\examplemacro}
   \newcommand*\examplemacro[2][]{%
@@ -229,16 +254,21 @@ and the derived files           elegantlatex.ins,
 }
 \end{macro}
 %    \end{macrocode}
+%
+%    \begin{macrocode}
 %</note>
+%    \end{macrocode}
 % 
 %
 % \DescribeEnv{YOURENV}
 % Put description of |YOURENV| here.
 %
-%<*book>
+%
+%
 %\begin{environment}{example}
-% 最初我们在 Book 上定义了 example 环境。
+% \makebox[0pt][r]{\makebox[4cm][l]{\textcolor{blue}{\texttt{\small elegantbook} / }}} 最初我们在 Book 上定义了 |example| 环境。
 %    \begin{macrocode}
+%<*book>
 \newcounter{exam}[chapter]
 \setcounter{exam}{0}
 \renewcommand{\theexam}{\thechapter.\arabic{exam}}
@@ -246,9 +276,9 @@ and the derived files           elegantlatex.ins,
   \refstepcounter{exam}
   \par\noindent\textbf{\color{main}{\examplename} \theexam #1 }\rmfamily}{
   \par\ignorespacesafterend}
+%</book>
 %    \end{macrocode}
 %\end{environment}
-%</book>
 %
 % \section{Implementation}
 % \begin{environment}{YOURENV}

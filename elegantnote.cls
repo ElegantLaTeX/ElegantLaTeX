@@ -71,11 +71,10 @@
 %% You.
 %% 
 %% This work consists of the file  elegantlatex.dtx
-%% and the derived files           elegantlatex.ins,
-%%                                 elegantlatex.pdf,
-%%                                 elegantnote.cls,
-%%                                 elegantbook.cls and
-%%                                 elegantpaper.cls.
+%% and the derived files elegantlatex.pdf,
+%%                       elegantnote.cls,
+%%                       elegantbook.cls and
+%%                       elegantpaper.cls.
 %% 
 %%
 %% End of file `elegantnote.cls'.
