@@ -18,9 +18,12 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{elegantnote}[2020/08/26 v1.0 Elegant Note Template]
 
-\newcommand*\examplemacro[2][]{%
-  Some code here, probably
+\begin{macro}{\examplemacro}
+  \changes{v1.0}{2009/10/06}{Some change from the previous version}
+  \newcommand*\examplemacro[2][]{%
+    Some code here, probably
 }
+\end{macro}
 %% 
 %% Copyright (C) 2009 by ElegantLaTeX <elegantlatex2e@gmail.com>
 %% 

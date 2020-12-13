@@ -90,10 +90,12 @@ and the derived files           elegantlatex.ins,
 
 
 %<*driver>
+\ProvidesFile{\jobname.dtx}[2020/04/12 v3.1.1 ElegantLaTeX dtx]
 \documentclass{ltxdoc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{geometry}
+\linespread{1.35}
 \geometry{a4paper, lmargin=2in, rmargin=1in}
 \usepackage{fontspec}
 \setmainfont{Amiri}
@@ -126,19 +128,15 @@ and the derived files           elegantlatex.ins,
 \end{document}
 %</driver>
 % \fi
-%
-%\GetFileInfo{elegantnote.cls}
-%\GetFileInfo{elegantbook.cls}
-%\GetFileInfo{elegantpaper.cls}
+%\GetFileInfo{\jobname.dtx}
 %
 %
-%\title{^^A
-%  Elegant\LaTeX{} --- Templates Guide Book\thanks{^^A
-%    本文档为 Elegant\LaTeX{} 说明文档。 \fileversion, last revised \filedate.^^A
-%  }^^A
-%}
-%\author{^^A
-%  You\thanks{E-mail: elegantlatex2e@gmail.com}^^A
+%\title{\bfseries
+%  Elegant\LaTeX{} --- Templates Guide Book \\ 
+%  ElegantLaTeX 系列模板说明文档
+% }
+%\author{
+%  Ethan Deng \thanks{E-mail: elegantlatex2e@gmail.com} \& Liam Huang 
 %}
 %\date{Released \filedate}
 %
@@ -148,28 +146,28 @@ and the derived files           elegantlatex.ins,
 %
 %\DescribeMacro{\examplemacro}
 % Some text about an example macro called \cs{examplemacro}, which
-% might have an optional argument \oarg{arg1} and mandatory one \zhlipsum[3]
+% might have an optional argument \oarg{arg1} and mandatory one 
 % \marg{arg2}.
 %
-%\StopEventually{^^A
+%
+%\section{模板声明}
+% Hello World.
+% \zhlipsum[3]
+%\StopEventually{
 %  \PrintChanges
 %  \PrintIndex
 %}
 %
-%    \begin{macrocode}
+%
 %<*note>
-%    \end{macrocode}
-%
-%\begin{macro}{\examplemacro}
-%\changes{v1.0}{2009/10/06}{Some change from the previous version}
 %    \begin{macrocode}
-\newcommand*\examplemacro[2][]{%
-  Some code here, probably
+\begin{macro}{\examplemacro}
+  \changes{v1.0}{2009/10/06}{Some change from the previous version}
+  \newcommand*\examplemacro[2][]{%
+    Some code here, probably
 }
+\end{macro}
 %    \end{macrocode}
-%\end{macro}
 %
-%    \begin{macrocode}
 %</note>
-%    \end{macrocode}
 %\Finale
