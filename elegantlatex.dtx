@@ -84,9 +84,9 @@ and the derived files           elegantlatex.ins,
 %</internal>
 
 %<note|book|paper>\NeedsTeXFormat{LaTeX2e}
-%<note>\ProvidesClass{elegantnote}[2020/08/26 v1.0 Elegant Note Template]
-%<book>\ProvidesClass{elegantbook}[2020/08/26 v1.0 Elegant Book Template]
-%<paper>\ProvidesClass{elegantpaper}[2020/08/26 v1.0 Elegant Paper Template]
+%<note>\ProvidesClass{elegantnote}[2020/08/26 v1.1 Elegant Note Template]
+%<book>\ProvidesClass{elegantbook}[2020/08/26 v1.2 Elegant Book Template]
+%<paper>\ProvidesClass{elegantpaper}[2020/08/26 v1.3 Elegant Paper Template]
 
 
 %<*driver>
@@ -95,6 +95,14 @@ and the derived files           elegantlatex.ins,
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{geometry}
+\geometry{
+  a4paper,
+  top=25.4mm, bottom=25.4mm,
+  left=25mm, right=25mm,
+  headheight=2.5cm,
+  headsep=4mm,
+  footskip=12mm
+}
 \linespread{1.35}
 \geometry{a4paper, lmargin=2in, rmargin=1in}
 \usepackage{fontspec}
@@ -120,6 +128,10 @@ and the derived files           elegantlatex.ins,
 \setlength{\parindent}{2em}
 \usepackage{zhlipsum}
 \usepackage[numbered]{hypdoc}
+\newcommand\email[1]{\href{mailto:#1}{\nolinkurl{#1}}}
+\usepackage[shortlabels,inline]{enumitem}
+\setlist{nolistsep}
+\usepackage{xcolor}
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
@@ -144,30 +156,101 @@ and the derived files           elegantlatex.ins,
 %
 %\changes{v1.0}{2009/10/06}{First public release}
 %
-%\DescribeMacro{\examplemacro}
-% Some text about an example macro called \cs{examplemacro}, which
-% might have an optional argument \oarg{arg1} and mandatory one 
-% \marg{arg2}.
+%
+%\section{ElegantLaTeX 简介}
+% Elegant\LaTeX{} 项目组致力于打造一系列美观、优雅、简便的模板方便用户使用。目前由
+% \href{https://github.com/ElegantLaTeX/ElegantNote}{ElegantNote}，
+% \href{https://github.com/ElegantLaTeX/ElegantBook}{ElegantBook}，
+% \href{https://github.com/ElegantLaTeX/ElegantPaper}{ElegantPaper} 组成，
+% 分别用于排版笔记，书籍和工作论文。强烈推荐使用最新正式版本！本文将介绍本模板的一些设置内容以及基本使用方法。
+% 如果您有其他问题，建议或者意见，欢迎在 GitHub 上给我们提交 
+% \href{https://github.com/ElegantLaTeX/ElegantBook/issues}{issues} 或者邮件联系我们。
+%
+% 我们的联系方式如下，建议加入用户 QQ 群提问，这样能更快获得准确的反馈，加群时请备注 \LaTeX{} 或者 Elegant\LaTeX{} 相关内容。
+% \begin{itemize}
+%  \item 官网：\href{https://elegantlatex.org/}{https://elegantlatex.org/}
+%  \item GitHub 网址：\href{https://github.com/ElegantLaTeX/}{https://github.com/ElegantLaTeX/}
+%  \item CTAN 地址：\href{https://ctan.org/pkg/elegantbook}{https://ctan.org/pkg/elegantbook}
+%  \item 文档 Wiki：\href{https://github.com/ElegantLaTeX/ElegantBook/wiki}{https://github.com/ElegantLaTeX/ElegantBook/wiki}
+%  \item 下载地址：\href{https://github.com/ElegantLaTeX/ElegantBook/releases}{正式发行版}，\href{https://github.com/ElegantLaTeX/ElegantBook/archive/master.zip}{最新版}
+%  \item 微博：Elegant\LaTeX{}
+%  \item 微信公众号：Elegant\LaTeX{}
+%  \item 用户 QQ 群：692108391 
+%  \item 邮件：\email{elegantlatex2e@gmail.com}
+\end{itemize}
+%
+%\section{使用说明}
+%\DescribeMacro{\email}
+% 模板定义了邮件命令 \cs{email}, 有一个必选项，\marg{url}.
+% \begin{verbatim}
+%  \email{elegantlatex2e@gmail.com}
+% \end{verbatim}
+%
+%\subsection{语言选项}
 %
 %
-%\section{模板声明}
-% Hello World.
-% \zhlipsum[3]
-%\StopEventually{
-%  \PrintChanges
-%  \PrintIndex
-%}
+%\DescribeMacro{scheme}
+% 本模板内含三套语言环境 \verb|lang=cn|、\verb|lang=en| 以及 \verb|lang=it| 
+% \footnote{由 \href{https://github.com/VincentMVV}{VincentMVV} 提供意大利语翻译，
+% 具体的内容见 \href{https://github.com/ElegantLaTeX/ElegantBook/issues/85}{Italian translation}。}，
+% 改变语言环境会改变图表标题的引导词（图，表），文章结构词（比如目录，参考文献等），
+% 以及定理环境中的引导词（比如定理，引理等）。不同语言模式的启用如下：
+% \begin{verbatim}
+%  \documentclass[cn]{elegantbook} 
+%  \documentclass[lang=cn]{elegantbook}
+% \end{verbatim}
+%
+% \DescribeMacro{color}
+% 如果需要自定义颜色的话请选择 \verb|nocolor| 选项或者使用 \verb|color=none|，然后在导言区定义 structurecolor、main、second、third 颜色，具体方法如下：
+% \begin{verbatim}
+%  \definecolor{structurecolor}{RGB}{0,0,0}
+%  \definecolor{main}{RGB}{70,70,70}    
+%  \definecolor{second}{RGB}{115,45,2}    
+%  \definecolor{third}{RGB}{0,80,80} 
+% \end{verbatim}
+%
+% \begin{macro}{\mymacro}
+% We define a trivial macro, |\mymacro|, to illustrate
+% the use of the |macro| environment.
+%    \begin{macrocode}
+\newcommand{\mymacro}{This is
+  a \LaTeX{} macro.}
+%    \end{macrocode}
+% \end{macro}
+%
+%
 %
 %
 %<*note>
 %    \begin{macrocode}
 \begin{macro}{\examplemacro}
-  \changes{v1.0}{2009/10/06}{Some change from the previous version}
   \newcommand*\examplemacro[2][]{%
     Some code here, probably
 }
 \end{macro}
 %    \end{macrocode}
-%
 %</note>
+% 
+%
+%
+%<*book>
+%\begin{environment}{example}
+% 最初我们在 Book 上定义了 example 环境。
+%    \begin{macrocode}
+\newcounter{exam}[chapter]
+\setcounter{exam}{0}
+\renewcommand{\theexam}{\thechapter.\arabic{exam}}
+\newenvironment{example}[1][]{
+  \refstepcounter{exam}
+  \par\noindent\textbf{\color{main}{\examplename} \theexam #1 }\rmfamily}{
+  \par\ignorespacesafterend}
+%    \end{macrocode}
+%\end{environment}
+%</book>
+%
+%\StopEventually{
+%  \PrintChanges
+%}
+%
+%
 %\Finale

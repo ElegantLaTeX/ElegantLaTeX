@@ -16,8 +16,18 @@
 %% 
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elegantbook}[2020/08/26 v1.0 Elegant Book Template]
+\ProvidesClass{elegantbook}[2020/08/26 v1.2 Elegant Book Template]
 
+\end{itemize}
+\newcommand{\mymacro}{This is
+  a \LaTeX{} macro.}
+\newcounter{exam}[chapter]
+\setcounter{exam}{0}
+\renewcommand{\theexam}{\thechapter.\arabic{exam}}
+\newenvironment{example}[1][]{
+  \refstepcounter{exam}
+  \par\noindent\textbf{\color{main}{\examplename} \theexam #1 }\rmfamily}{
+  \par\ignorespacesafterend}
 %% 
 %% Copyright (C) 2009 by ElegantLaTeX <elegantlatex2e@gmail.com>
 %% 

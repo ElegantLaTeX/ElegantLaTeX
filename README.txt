@@ -9,3 +9,6 @@ See http://www.latex-project.org/lppl.txt
 Some text about the package: probably the same as the abstract.
 
 
+\end{itemize}
+\newcommand{\mymacro}{This is
+  a \LaTeX{} macro.}

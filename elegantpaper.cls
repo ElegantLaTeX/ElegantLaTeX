@@ -16,8 +16,11 @@
 %% 
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elegantpaper}[2020/08/26 v1.0 Elegant Paper Template]
+\ProvidesClass{elegantpaper}[2020/08/26 v1.3 Elegant Paper Template]
 
+\end{itemize}
+\newcommand{\mymacro}{This is
+  a \LaTeX{} macro.}
 %% 
 %% Copyright (C) 2009 by ElegantLaTeX <elegantlatex2e@gmail.com>
 %% 

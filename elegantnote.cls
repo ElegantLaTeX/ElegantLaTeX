@@ -16,10 +16,12 @@
 %% 
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elegantnote}[2020/08/26 v1.0 Elegant Note Template]
+\ProvidesClass{elegantnote}[2020/08/26 v1.1 Elegant Note Template]
 
+\end{itemize}
+\newcommand{\mymacro}{This is
+  a \LaTeX{} macro.}
 \begin{macro}{\examplemacro}
-  \changes{v1.0}{2009/10/06}{Some change from the previous version}
   \newcommand*\examplemacro[2][]{%
     Some code here, probably
 }
